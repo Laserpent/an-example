@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html style="font-size: 50px;" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#2ba667" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Trip Card" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon-precomposed" sizes="any" href="resources/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="any"  href="resources/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title>an-example</title>
+    <style>
+      @-webkit-keyframes mint-spinner-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
+        }
+      }
+
+      @keyframes mint-spinner-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
+        }
+      }
+
+      @-webkit-keyframes mint-spinner-double-bounce {
+        0%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        50% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-spinner-double-bounce {
+        0%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        50% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @-webkit-keyframes mint-spinner-triple-bounce {
+        0%,
+        80%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        40% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-spinner-triple-bounce {
+        0%,
+        80%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        40% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @-webkit-keyframes mint-fading-circle {
+        0%,
+        39%,
+        to {
+          opacity: 0;
+        }
+
+        40% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes mint-fading-circle {
+        0%,
+        39%,
+        to {
+          opacity: 0;
+        }
+
+        40% {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes v-modal-in {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes v-modal-in {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      @-webkit-keyframes v-modal-out {
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes v-modal-out {
+        to {
+          opacity: 0;
+        }
+      }
+
+      @-webkit-keyframes mint-zoom {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        10% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        30% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        50% {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
+        70% {
+          -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+        }
+
+        90% {
+          -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+        }
+
+        to {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-zoom {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        10% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        30% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        50% {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
+        70% {
+          -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+        }
+
+        90% {
+          -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+        }
+
+        to {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        /*
+        background: #fff;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        */
+        height: 100%;
+      }
+
+      * {
+        -webkit-tap-highlight-color: transparent;
+        outline: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      *,
+      body,
+      p {
+        margin: 0;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      img {
+        border: 0 none;
+        vertical-align: top;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      body {
+        margin: 0 auto;
+        min-width: 320px;
+        -webkit-text-size-adjust: 100% !important;
+        -moz-text-size-adjust: 100% !important;
+        -ms-text-size-adjust: 100% !important;
+      }
+
+      body,
+      html {
+        font-family: \5fae\8f6f\96c5\9ed1, \5b8b\4f53, Hiragino Sans GB, STHeiti, WenQuanYi Micro Hei, Droid Sans Fallback, SimSun, sans-serif;
+        line-height: 1;
+        font-size: 14px;
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        background-color: #2ba667;
+      }
+
+      ::-webkit-input-placeholder {
+        color: #9a9a9a;
+      }
+
+      .footer-comp[data-v-0a8392f0] {
+        color: #94949e;
+        width: 6.4rem;
+        padding: 0.35rem 0;
+        margin: 0 auto;
+      }
+
+      .footer-comp .caict[data-v-0a8392f0] {
+        margin: 0.15rem auto 0;
+      }
+
+      .footer-comp .caict img[data-v-0a8392f0] {
+        width: 100%;
+      }
+
+      .result-wrap[data-v-331d83c8] {
+        height: 100%;
+        font-size: 15px;
+      }
+
+      .result-wrap .imgholder2[data-v-331d83c8] {
+        padding-top: 2.62rem;
+      }
+
+      .result-wrap .greenBg[data-v-331d83c8] {
+        margin-top: -0.45rem;
+        background: url(./resources/bg.png) no-repeat;
+      }
+
+      .result-wrap .bg-pic1[data-v-331d83c8] {
+        background-size: 100% 100%;
+        position: relative;
+      }
+
+      .result-wrap .bg-pic1 .banner-img-holder[data-v-331d83c8] {
+        position: relative;
+        width: 100%;
+        height: 0;
+      }
+
+      .result-wrap .bg-pic1 .div-main[data-v-331d83c8] {
+        width: 6.4rem;
+        min-height: 7.12rem;
+        margin: 0 auto 0 auto;
+        background-color: #fff;
+        border-radius: 0.24rem;
+        -webkit-box-shadow: 0 0 0.24rem 0 #dedede;
+        box-shadow: 0 0 0.24rem 0 #dedede;
+        overflow: hidden;
+      }
+
+      .result-wrap .bg-pic1 .div-main .green[data-v-331d83c8] {
+        background: url(./resources/title.png) no-repeat 50%;
+        background-size: 100%;
+      }
+
+      .result-wrap .bg-pic1 .div-main .top[data-v-331d83c8] {
+        height: 0.64rem;
+        overflow: hidden;
+      }
+
+      .result-wrap .bg-pic1 .div-main .hidden-tel[data-v-331d83c8] {
+        color: #46464c;
+        font-size: 0.35rem;
+        font-weight: 700;
+        padding: 0.4rem 0 0.32rem;
+        line-height: 1.2;
+      }
+
+      .result-wrap .bg-pic1 .div-main .update[data-v-331d83c8] {
+        font-size: 0.35rem;
+        color: #94949e;
+        letter-spacing: 0;
+        text-align: center;
+        padding-bottom: 0.36rem;
+      }
+
+      .result-wrap .bg-pic1 .div-main .info .img-holder[data-v-331d83c8] {
+        width: 3.6rem;
+        height: 3.6rem;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .result-wrap .bg-pic1 .div-main .info .img-holder .qr-img[data-v-331d83c8] {
+        width: 100%;
+        height: 100%;
+      }
+
+      .result-wrap .bg-pic1 .div-main .bott[data-v-331d83c8] {
+        width: 5.67rem;
+        margin: 0.36rem auto 0;
+        color: #94949e;
+        padding-bottom: 0.2rem;
+        padding-top: 0.15rem;
+        font-size: 0.38rem;
+        line-height: 0.48rem;
+        text-align: left;
+        border-top: 1px solid #e4e4e4;
+      }
+
+      .result-wrap .bg-pic1 .tip[data-v-331d83c8] {
+        margin-top: 0.32rem;
+        font-size: 0.2rem;
+        color: #fff;
+      }
+    </style>
+    <style>
+      .sf-hidden {
+        display: none !important;
+      }
+    </style>
+    <meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;" />
+  </head>
+
+  <body>
+    <noscript class="sf-hidden">
+      <strong>We're sorry but vue-cli3-demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+      <div data-v-331d83c8="" class="result-wrap">
+        <div data-v-331d83c8="" class="bg-pic1 greenBg">
+          <div data-v-331d83c8="" class="banner-img-holder imgholder2"></div>
+          <div data-v-331d83c8="" class="div-main">
+            <div data-v-331d83c8="" class="top green"></div>
+            <p data-v-331d83c8="" class="hidden-tel"><span contenteditable="true">171****6495</span>的动态行程卡</p>
+            <p data-v-331d83c8="" class="update">
+              <span>
+                <script type="text/javascript">
+                  var d = new Date();
+                  var month = d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1;
+                  var date = d.getDate() < 10 ? "0" + d.getDate() : d.getDate();
+                  var hour = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+                  var min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+                  document.write("更新于：" + d.getFullYear() + "." + month + "." + date + " " + hour + ":" + min + ":26");
+                </script>
+              </span>
+            </p>
+            <div data-v-331d83c8="" class="info">
+              <div data-v-331d83c8="" class="img-holder green-bg">
+                <img data-v-331d83c8="" src="./resources/arrow.gif" alt="" class="qr-img" />
+              </div>
+            </div>
+            <div data-v-331d83c8="" class="bott">
+              <p>
+                您于前14天内到达或途经: 
+                <span contenteditable="true" style="font-size: 0.38rem; font-weight: 900; color: black;">广东省深圳市</span>
+              </p>
+            </div>
+          </div>
+          <div data-v-331d83c8="" class="tip">
+            结果包含您在前14天内到访的国家(地区)与停留4小时以上的国内城市
+            <br data-v-331d83c8="" />
+            <br data-v-331d83c8="" />
+            色卡仅对到访地作提醒，不关联健康状况
+          </div>
+          <div data-v-331d83c8="" class="foot-box">
+            <footer data-v-0a8392f0="" data-v-331d83c8="" class="footer-comp">
+              <div data-v-0a8392f0="">
+                <p data-v-0a8392f0="" style="font-size: 0.24rem; color: white;">————————— 本服务联合提供 —————————</p>
+              </div>
+              <div data-v-0a8392f0="" class="caict">
+                <img data-v-0a8392f0="" src="./resources/trust.png" alt="caict" />
+              </div>
+              <div data-v-0a8392f0="" style="padding-top: 0.15rem;">
+                <a data-v-0a8392f0="" style="font-size: 0.24rem; color: white;">客服热线：</a>
+                <a data-v-0a8392f0="" href="tel:10000" style="font-size: 0.24rem; color: white;">10000</a>
+                <a data-v-0a8392f0="" style="font-size: 0.24rem; color: white;">/</a>
+                <a data-v-0a8392f0="" href="tel:10086" style="font-size: 0.24rem; color: white;"> 10086</a>
+                <a data-v-0a8392f0="" style="font-size: 0.24rem; color: white;"> / </a>
+                <a data-v-0a8392f0="" href="tel:10010" style="font-size: 0.24rem; color: white;">10010</a>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div data-v-331d83c8="" style="position: fixed; bottom: 0px; display: flex; background: rgb(248, 248, 248) none repeat scroll 0% 0%; width: 100%;">
+          <div data-v-331d83c8="" style="color: rgb(68, 68, 68); text-align: left; padding-top: 0.1rem; font-size: 0.24rem; padding-left: 0.55rem; padding-bottom: 0.1rem; display: flex; width: 100%;">
+            <div data-v-331d83c8="" style="margin-left: 0.2rem; width: 39%;">
+              <div data-v-331d83c8="" style="font-weight: bold; margin-bottom: 0.12rem; margin-top: 0.2rem;">
+                一证通查来了！
+              </div>
+              <div data-v-331d83c8="" style="font-size: 0.2rem;">
+                立即点击进入
+              </div>
+            </div>
+            <div data-v-331d83c8="" style="padding: 0.2rem; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); border-radius: 0.1rem;">
+              <div data-v-331d83c8="" style="font-weight: bold; margin-bottom: 0.12rem;">
+                全国移动电话卡“⼀证通查”
+              </div>
+              <div data-v-331d83c8="" style="font-size: 0.2rem; text-align: center;">
+                防范诈骗，保护你我
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <tbdiv id="picinpicBtn" class="sf-hidden"></tbdiv>
+    <tbdiv id="playerControlBtn" class="sf-hidden"></tbdiv>
+    <tbdiv id="leftFullStackButton" class="sf-hidden"></tbdiv>
+    <tbdiv id="rightFullStackButton" class="sf-hidden"></tbdiv>
+  </body>
+</html>

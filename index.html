@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html style="font-size: 50px;" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#2ba667" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Trip Card" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="apple-touch-icon-precomposed" sizes="any" href="resources/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="any"  href="resources/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+    <title>&#x901a&#x4fe1&#x884c&#x7a0b&#x5361</title>
+    <style>
+      @-webkit-keyframes mint-spinner-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
+        }
+      }
+
+      @keyframes mint-spinner-rotate {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+
+        to {
+          -webkit-transform: rotate(1turn);
+          transform: rotate(1turn);
+        }
+      }
+
+      @-webkit-keyframes mint-spinner-double-bounce {
+        0%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        50% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-spinner-double-bounce {
+        0%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        50% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @-webkit-keyframes mint-spinner-triple-bounce {
+        0%,
+        80%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        40% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-spinner-triple-bounce {
+        0%,
+        80%,
+        to {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+
+        40% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @-webkit-keyframes mint-fading-circle {
+        0%,
+        39%,
+        to {
+          opacity: 0;
+        }
+
+        40% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes mint-fading-circle {
+        0%,
+        39%,
+        to {
+          opacity: 0;
+        }
+
+        40% {
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes v-modal-in {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes v-modal-in {
+        0% {
+          opacity: 0;
+        }
+      }
+
+      @-webkit-keyframes v-modal-out {
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes v-modal-out {
+        to {
+          opacity: 0;
+        }
+      }
+
+      @-webkit-keyframes mint-zoom {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        10% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        30% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        50% {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
+        70% {
+          -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+        }
+
+        90% {
+          -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+        }
+
+        to {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      @keyframes mint-zoom {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        10% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        30% {
+          -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+        }
+
+        50% {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
+        70% {
+          -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+        }
+
+        90% {
+          -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+        }
+
+        to {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+
+      #app {
+        font-family: Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        /*
+        background: #fff;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        */
+        height: 100%;
+      }
+
+      * {
+        -webkit-tap-highlight-color: transparent;
+        outline: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      *,
+      body,
+      p {
+        margin: 0;
+        padding: 0;
+        vertical-align: baseline;
+      }
+
+      img {
+        border: 0 none;
+        vertical-align: top;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      body {
+        margin: 0 auto;
+        min-width: 320px;
+        -webkit-text-size-adjust: 100% !important;
+        -moz-text-size-adjust: 100% !important;
+        -ms-text-size-adjust: 100% !important;
+      }
+
+      body,
+      html {
+        font-family: \5fae\8f6f\96c5\9ed1, \5b8b\4f53, Hiragino Sans GB, STHeiti, WenQuanYi Micro Hei, Droid Sans Fallback, SimSun, sans-serif;
+        line-height: 1;
+        font-size: 14px;
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        background-color: #2ba667;
+      }
+
+      ::-webkit-input-placeholder {
+        color: #9a9a9a;
+      }
+
+      .footer-comp {
+        color: #94949e;
+        width: 7.5rem;
+        padding: 0.35rem 0;
+        margin: 0 auto;
+      }
+
+      .footer-comp .caict {
+          margin: 0.15rem auto 0;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+          width: 100%;
+      }
+
+      .footer-comp .caict img {
+          -o-object-fit: cover;
+          object-fit: cover;
+      }
+      
+      .footer-comp .caict .caict1 {
+          margin-top: 0.015rem;
+          height: 0.28rem;
+          width: 1.54rem;
+      }
+
+      .footer-comp .caict .caict2 {
+          height: 0.3rem;
+          width: 1rem;
+          margin-left: 0.185rem;
+      }
+
+      .footer-comp .caict .caict3 {
+          height: 0.34rem;
+          width: 1.2rem;
+          margin-left: 0.185rem;
+      }
+
+      .footer-comp .caict .caict4 {
+          height: 0.33rem;
+          width: 1.18rem;
+          margin-left: 0.185rem;
+      }
+
+      .footer-comp .caict .caict5 {
+          height: 0.34rem;
+          width: 1.3rem;
+          margin-left: 0.15rem;
+      }
+
+      .result-wrap {
+        height: 100%;
+        font-size: 15px;
+      }
+
+      .result-wrap .imgholder2 {
+        padding-top: 2.62rem;
+      }
+
+      .result-wrap .greenBg {
+        margin-top: -0.45rem;
+        background: url(./resources/bg.png) no-repeat;
+      }
+
+      .result-wrap .bg-pic1 {
+        background-size: 100% 100%;
+        position: relative;
+      }
+
+      .result-wrap .bg-pic1 .banner-img-holder {
+        position: relative;
+        width: 100%;
+        height: 0;
+      }
+
+      .result-wrap .bg-pic1 .div-main {
+        width: 6.4rem;
+        min-height: 7.12rem;
+        margin: 0 auto 0 auto;
+        background-color: #fff;
+        border-radius: 0.24rem;
+        -webkit-box-shadow: 0 0 0.24rem 0 #dedede;
+        box-shadow: 0 0 0.24rem 0 #dedede;
+        overflow: hidden;
+      }
+
+      .result-wrap .bg-pic1 .div-main .green {
+        background: url(./resources/title.png) no-repeat 50%;
+        background-size: 100%;
+      }
+
+      .result-wrap .bg-pic1 .div-main .top {
+        height: 0.64rem;
+        overflow: hidden;
+      }
+
+      .result-wrap .bg-pic1 .div-main .hidden-tel {
+        color: #46464c;
+        font-size: 0.35rem;
+        font-weight: 700;
+        padding: 0.4rem 0 0.32rem;
+        line-height: 1.2;
+      }
+
+      .result-wrap .bg-pic1 .div-main .update {
+        font-size: 0.35rem;
+        color: #94949e;
+        letter-spacing: 0;
+        text-align: center;
+        padding-bottom: 0.36rem;
+      }
+
+      .result-wrap .bg-pic1 .div-main .info .img-holder {
+        width: 3.6rem;
+        height: 3.6rem;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+
+      .result-wrap .bg-pic1 .div-main .info .img-holder .qr-img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .result-wrap .bg-pic1 .div-main .bott {
+        width: 5.67rem;
+        margin: 0.36rem auto 0;
+        color: #94949e;
+        padding-bottom: 0.2rem;
+        padding-top: 0.15rem;
+        font-size: 0.38rem;
+        line-height: 0.48rem;
+        text-align: left;
+        border-top: 1px solid #e4e4e4;
+      }
+
+      .result-wrap .bg-pic1 .tip {
+        margin-top: 0.32rem;
+        font-size: 0.2rem;
+        color: #fff;
+      }
+    </style>
+    <style>
+      .sf-hidden {
+        display: none !important;
+      }
+    </style>
+    <meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;" />
+  </head>
+
+  <body>
+    <noscript class="sf-hidden">
+      <strong>We're sorry but vue-cli3-demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+      <div class="result-wrap">
+        <div class="bg-pic1 greenBg">
+          <div class="banner-img-holder imgholder2"></div>
+          <div class="div-main">
+            <div class="top green"></div>
+            <p class="hidden-tel"><span contenteditable="true">171****6495</span>&#x7684&#x52a8&#x6001&#x884c&#x7a0b&#x5361</p>
+            <p class="update">
+              <span>
+                <script type="text/javascript">
+                  let d = new Date();
+                  let month = d.getMonth() + 1 < 10 ? "0" + (d.getMonth() + 1) : d.getMonth() + 1;
+                  let date = d.getDate() < 10 ? "0" + d.getDate() : d.getDate();
+                  let hour = d.getHours() < 10 ? "0" + d.getHours() : d.getHours();
+                  let min = d.getMinutes() < 10 ? "0" + d.getMinutes() : d.getMinutes();
+                  document.write("\u66f4\u65b0\u4e8e\uff1a" + d.getFullYear() + "." + month + "." + date + " " + hour + ":" + min + ":26");
+                </script>
+              </span>
+            </p>
+            <div class="info">
+              <div class="img-holder green-bg">
+                <img src="./resources/arrow.gif" alt="" class="qr-img" />
+              </div>
+            </div>
+            <div class="bott">
+              <p>
+                &#x60a8&#x4e8e&#x524d&#x0037&#x5929&#x5185&#x5230&#x8fbe&#x6216&#x9014&#x7ecf&#x003a&#x0020
+                <span contenteditable="true" style="font-size: 0.38rem; font-weight: 900; color: black;">&#x5e7f&#x4e1c&#x7701&#x6df1&#x5733&#x5e02</span>
+              </p>
+            </div>
+          </div>
+          <div class="tip">
+            &#x7ed3&#x679c&#x5305&#x542b&#x60a8&#x5728&#x524d&#x0037&#x5929&#x5185&#x5230&#x8bbf&#x7684&#x56fd&#x5bb6&#x0028&#x5730&#x533a&#x0029&#x4e0e&#x505c&#x7559&#x0034&#x5c0f&#x65f6&#x4ee5&#x4e0a&#x7684&#x56fd&#x5185&#x57ce&#x5e02
+            <br />
+            <br />
+            &#x8272&#x5361&#x4ec5&#x5bf9&#x5230&#x8bbf&#x5730&#x4f5c&#x63d0&#x9192&#xff0c&#x4e0d&#x5173&#x8054&#x5065&#x5eb7&#x72b6&#x51b5
+          </div>
+          <div class="foot-box">
+            <footer class="footer-comp">
+              <div>
+                <p style="font-size: 0.24rem; color: white;">%u2014%u2014%u2014%u2014%u2014%u2014%u2014%u2014%u2014 %u672C%u670D%u52A1%u8054%u5408%u63D0%u4F9B %u2014%u2014%u2014%u2014%u2014%u2014%u2014%u2014%u2014</p>
+              </div>
+              <div class="caict">
+                <img src="./resources/trust-a.png" alt="caict" class="caict1">
+                <img src="./resources/trust-b.png" alt="caict" class="caict2">
+                <img src="./resources/trust-c.png" alt="caict" class="caict3">
+                <img src="./resources/trust-d.png" alt="caict" class="caict4">
+                <img src="./resources/trust-e.png" alt="caict" class="caict5">
+              </div>
+                <div style="padding-top: 0.15rem;">
+                  <a style="font-size: 0.24rem; color: white;">%u5BA2%u670D%u70ED%u7EBF%uFF1A</a>
+                  <a href="tel:10000" style="font-size: 0.24rem; color: white;">10000</a>
+                  <a style="font-size: 0.24rem; color: white;">/</a>
+                  <a href="tel:10086" style="font-size: 0.24rem; color: white;"> 10086</a>
+                  <a style="font-size: 0.24rem; color: white;"> / </a>
+                  <a href="tel:10010" style="font-size: 0.24rem; color: white;">10010</a>
+                  <a style="font-size: 0.24rem; color: white;">/</a>
+                  <a href="tel:10099" style="font-size: 0.24rem; color: white;"> 10099</a>
+              </div>
+            </footer>
+          </div>
+        </div>
+        <div style="position: fixed; bottom: 0px; display: flex; background: rgb(248, 248, 248) none repeat scroll 0% 0%; width: 100%;">
+          <div style="color: rgb(68, 68, 68); text-align: left; padding-top: 0.1rem; font-size: 0.24rem; padding-left: 0.55rem; padding-bottom: 0.1rem; display: flex; width: 100%;">
+            <div style="margin-left: 0.2rem; width: 39%;">
+              <div style="font-weight: bold; margin-bottom: 0.12rem; margin-top: 0.2rem;">
+                &#x4e00&#x8bc1&#x901a&#x67e5&#x6765&#x4e86&#xff01
+              </div>
+              <div style="font-size: 0.2rem;">
+                &#x7acb&#x5373&#x70b9&#x51fb&#x8fdb&#x5165
+              </div>
+            </div>
+            <div style="padding: 0.2rem; background-color: rgb(0, 0, 0); color: rgb(255, 255, 255); border-radius: 0.1rem;">
+              <div style="font-weight: bold; margin-bottom: 0.12rem;">
+                &#x5168&#x56fd&#x79fb&#x52a8&#x7535&#x8bdd&#x5361&#x201c&#x2f00&#x8bc1&#x901a&#x67e5&#x201d
+              </div>
+              <div style="font-size: 0.2rem; text-align: center;">
+                &#x9632&#x8303&#x8bc8&#x9a97&#xff0c&#x4fdd&#x62a4&#x4f60&#x6211
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

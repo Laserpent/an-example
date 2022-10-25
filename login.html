@@ -576,30 +576,6 @@
       -webkit-box-shadow: 0 2px 16px 0 rgba(39, 122, 255, 0.5);
       box-shadow: 0 2px 16px 0 rgba(39, 122, 255, 0.5);
     }
-    .lightbox{
-      position: fixed;
-      display: flex;
-      left: 0;
-      bottom: 0;
-      height: 100vh;
-      width: 100vw;
-      z-index: 10;
-    }
-    .checked{
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      z-index: 12;
-    }
-    .card{
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      z-index: 11;
-    }
     .shade{
       display: flex;
       position: absolute;
@@ -608,20 +584,39 @@
       width: 100vw;
       z-index: 9;
     }
+    .lightbox{
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
+    .checked{
+      position: absolute;
+      display: none;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 12;
+    }
+    .card{
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 11;
+    }
     .check{
       position: absolute;
-      top: 46%;
+      top: 71%;
       left: 11%;
-      height: 4%;
+      height: 5%;
       width: 8%;
       z-index: 21;
     }
     .confirm{
       display: none;
       position: absolute;
-      top: 54%;
+      top: 83%;
       left: 10%;
-      height: 6%;
+      height: 9%;
       width: 80%;
       z-index: 21;
     }

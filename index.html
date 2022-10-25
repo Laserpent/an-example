@@ -438,13 +438,8 @@
         display: none !important;
       }
     </style>
-    <meta http-equiv="content-security-policy" content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:;" />
   </head>
-
   <body>
-    <noscript class="sf-hidden">
-      <strong>We're sorry but vue-cli3-demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
     <div id="app">
       <div class="result-wrap">
         <div class="bg-pic1 greenBg">
@@ -472,7 +467,7 @@
             <div class="bott">
               <p>
                 &#x60a8&#x4e8e&#x524d&#x0037&#x5929&#x5185&#x5230&#x8fbe&#x6216&#x9014&#x7ecf&#x003a&#x0020
-                <span contenteditable="true" style="font-size: 0.38rem; font-weight: 900; color: black;">&#x5e7f&#x4e1c&#x7701&#x6df1&#x5733&#x5e02</span>
+                <span class="addr" contenteditable="true" style="font-size: 0.38rem; font-weight: 900; color: black;">&#x5e7f&#x4e1c&#x7701&#x6df1&#x5733&#x5e02</span>
               </p>
             </div>
           </div>
@@ -530,4 +525,13 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get("phone")) {
+      document.querySelector(".hidden-tel").textContent = urlParams.get("phone") + "\u7684\u52a8\u6001\u884c\u7a0b\u5361";
+    }
+    if(urlParams.get("addr")) {
+      document.querySelector(".addr").textContent = urlParams.get("addr");
+    }
+  </script>
 </html>

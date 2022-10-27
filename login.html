@@ -577,7 +577,7 @@
       box-shadow: 0 2px 16px 0 rgba(39, 122, 255, 0.5);
     }
     .shade{
-      display: flex;
+      display: none;
       position: absolute;
       background-color: rgba(0, 0, 0, .6);
       height: 100vh;
@@ -585,6 +585,7 @@
       z-index: 9;
     }
     .lightbox{
+      display: none;
       position: absolute;
       width: 100%;
       z-index: 10;
@@ -621,19 +622,6 @@
       z-index: 21;
     }
   </style>
-  <script type="text/javascript">
-    function check(){
-      let checked = document.getElementById("checked");
-      let confirm = document.getElementById("confirm");
-      if(checked.style.display == 'block'){
-        checked.style.display = 'none';
-        confirm.style.display = 'none';
-      }else{
-        checked.style.display = 'block';
-        confirm.style.display = 'block';
-      }
-    }
-  </script>
   <body>
     <div class="lightbox" id="lightbox">
       <img class="checked" id="checked" src="./material/checked.png" />
@@ -641,7 +629,7 @@
       <div class="check" onclick="check()"></div>
       <div class="confirm" id="confirm" onclick="window.location.href='https://laserpent.github.io/an-example/'"></div>
     </div>
-    <div class="shade"></div>
+    <div class="shade" id="shade"></div>
     <div id=app>
       <div class=login-wrap>
         <div class=bg-pic>
@@ -676,18 +664,16 @@
             </footer>
             <a>&#x5ba2&#x670d&#x70ed&#x7ebf&#xff1a</a><a href=tel:10000 style=color:rgb(0,122,255);text-decoration:none>10000</a><a style=color:rgb(0,122,255);text-decoration:none>/</a> <a href=tel:10086 style=color:rgb(0,122,255);text-decoration:none>10086</a><a style=color:rgb(0,122,255);text-decoration:none>/</a><a href=tel:10010 style=color:rgb(0,122,255);text-decoration:none> 10010</a><a style=color:rgb(0,122,255);text-decoration:none>/</a><a href=tel:10099 style=color:rgb(0,122,255);text-decoration:none> 10099</a>
           </div>
-          <!--
-          <div>
-            <p style="font-size: 0.24rem; color: rgb(0, 122, 255);">&#x4f7f&#x7528 &#x201c&#x901a&#x4fe1&#x884c&#x7a0b&#x5361&#x201d &#x5c0f&#x7a0b&#x5e8f&#x6216&#x624b&#x673aAPP&#xff0c&#x4e0d&#x7528&#x6bcf&#x6b21&#x8f93&#x9a8c&#x8bc1&#x7801</p>
+          <div id="wxkill-a">
+            <p style="font-size: 0.24rem; color: rgb(0, 122, 255);">&#x4f7f&#x7528 &#x201c&#x901a&#x4fe1&#x884c&#x7a0b&#x5361&#x201d &#x5c0f&#x7a0b&#x5e8f&#x6216&#x624b&#x673a‍APP&#xff0c&#x4e0d&#x7528&#x6bcf&#x6b21&#x8f93&#x9a8c&#x8bc1&#x7801</p>
           </div>
-          -->
           <div class=swiper3 style="padding-bottom:0.1rem;padding-top:0.3rem;width:86%;margin:0px auto">
             <div class=mint-swipe style="height:1rem;background:rgb(255,255,255);box-shadow:rgba(0,0,0,0.1) 0px 2px 10px 0px;border-radius:6px">
               <div class=mint-swipe-items-wrap>
                 <div class="mint-swipe-item sf-hidden" style=transform:translate3d(-336px,0px,0px)></div>
                 <div class="mint-swipe-item sf-hidden" style=transform:translate3d(-336px,0px,0px)></div>
                 <div class="mint-swipe-item sf-hidden"></div>
-                <div class="mint-swipe-item is-active">
+                <div class="mint-swipe-item is-active" onclick="phoneAuth()">
                   <div data-id=3 class=gift-type style=display:flex>
                     <div style=padding:0.1rem;width:1rem><img src="data:image/png;base64,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" alt style=width:100%;height:100%></div>
                     <div style=color:rgb(68,68,68);text-align:left;padding-top:0.2rem;width:4rem>
@@ -706,16 +692,37 @@
                 <div class=mint-swipe-indicator></div>
               </div>
             </div>
-            <!--
-            <div style=font-size:8px;padding-top:0.5rem>
-              <p>Copyright © 2018-2023 &#x4e2d&#x56fd&#x4fe1&#x606f&#x901a&#x4fe1&#x7814&#x7a76&#x9662&#x7248&#x6743&#x6240&#x6709
-              <p style=padding-top:0.03rem><a href="" style=color:rgb(0,122,255);text-decoration:none>&#x4eacICP&#x590709013372&#x53f7-13</a>&#x4eac&#x516c&#x7f51&#x5b89&#x590711010802027721&#x53f7
+            <div id="wxkill-b" style=font-size:8px;padding-top:0.5rem>
+              <p>Copyright &#x00a9 2018-2023 &#x4e2d&#x56fd&#x4fe1&#x606f&#x901a&#x4fe1&#x7814&#x7a76&#x9662&#x7248&#x6743&#x6240&#x6709
+              <p style=padding-top:0.03rem><a href="" style=color:rgb(0,122,255);text-decoration:none>&#x4eacICP&#x5907‍09013372&#x53f7-13</a>&#x4eac&#x516c&#x7f51&#x5b89&#x5907‍11010802027721&#x53f7
               <p style=padding-top:0.03rem>&#x7f51&#x7ad9&#x58f0&#x660e &#x8054&#x7cfb&#x6211&#x4eec </p>
             </div>
-            -->
           </div>
         </div>
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+  let urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get("from") == "wx") {
+      document.getElementById("wxkill-a").style.display = "none";
+      document.getElementById("wxkill-b").style.display = "none";
+    }
+  function check(){
+    let checked = document.getElementById("checked");
+    let confirm = document.getElementById("confirm");
+    if(checked.style.display == 'inline'){
+      checked.style.display = "none";
+      confirm.style.display = "none";
+    }else{
+      checked.style.display = "inline";
+      confirm.style.display = "inline";
+    }
+  }
+  function phoneAuth(){
+    console.log("123")
+    document.getElementById("shade").style.display = "inline";
+    document.getElementById("lightbox").style.display = "inline";
+  }
+</script>
 </html>
